@@ -1,19 +1,44 @@
-import { ColorModeScript } from "@chakra-ui/react"
+import { ColorModeScript, Heading } from "@chakra-ui/react"
 import * as React from "react"
 import * as ReactDOM from "react-dom/client"
 import { App } from "./App"
 import reportWebVitals from "./reportWebVitals"
 import * as serviceWorker from "./serviceWorker"
-
-
+import '@fontsource-variable/open-sans'
+import '@fontsource-variable/spline-sans'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme as proTheme } from '@chakra-ui/pro-theme'
+import { extendTheme, theme as baseTheme } from '@chakra-ui/react'
 const container = document.getElementById("root")
 if (!container) throw new Error('Failed to find the root element');
 const root = ReactDOM.createRoot(container)
+import { Amplify } from 'aws-amplify';
+import awsExports from './aws-exports';
+Amplify.configure(awsExports);
+
+
+export const theme = extendTheme(
+  {
+    colors: { ...baseTheme.colors, brand: baseTheme.colors.blue, },
+  },
+  {
+    
+    fonts: {
+      heading: "'Inter Variable', -apple-system, system-ui, sans-serif",
+      body: "'Inter Variable', -apple-system, system-ui, sans-serif",
+    },
+  },
+ 
+  proTheme,
+)
+
 
 root.render(
   <React.StrictMode>
+     <ChakraProvider theme={theme}>
     <ColorModeScript />
     <App />
+    </ChakraProvider>
   </React.StrictMode>,
 )
 
