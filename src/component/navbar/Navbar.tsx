@@ -15,6 +15,8 @@ import { FiBell, FiSearch } from 'react-icons/fi'
 import { DocumentPopover } from './DocumentPopover'
 import { Logo } from './Logo'
 import { MobileDrawer } from './MobileDrawer'
+import { Link } from "react-router-dom";
+
 
 export const Navbar = () => (
   <Box as="section" minH="lg">
@@ -58,6 +60,7 @@ export const Navbar = () => (
             <Avatar boxSize="10" src="https://i.pravatar.cc/300" />
           </HStack>
         </HStack>
+        <Link to="/login"><Button colorScheme='teal' size='sm'>Login</Button></Link>
       </Container>
     </Box>
   </Box>
